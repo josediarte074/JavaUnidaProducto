@@ -24,6 +24,8 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
+
+    //Crear Productos
     @PostMapping
     public ResponseEntity<?> createProducto(@RequestBody ProductoModule producto) {
         if (producto.getStock() == null || producto.getStock() < 0) {
@@ -35,12 +37,12 @@ public class ProductoController {
         ProductoModule productoCreado = productoService.crearProducto(producto);
         return ResponseEntity.ok(productoCreado);
     }
-
+    //LIstar todos los productos
     @GetMapping
     public ResponseEntity<List<ProductoModule>> getAllProducto() {
         return ResponseEntity.ok(productoService.getAllProducto());
     }
-
+    //Buscar Producto por ID
     @GetMapping("/{id}")
     public ResponseEntity<?> searchProductoById(@PathVariable("id") Integer id) {
         try {
@@ -50,7 +52,7 @@ public class ProductoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Producto no encontrado con ID: " + id);
         }
     }
-
+    //Actualizar Producto
     @PutMapping("/{id}")
     public ResponseEntity<?> updateProducto(@PathVariable("id") Integer id,
             @RequestBody ProductoModule productoActualizado) {
@@ -65,13 +67,13 @@ public class ProductoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
-
+    //ELIMINAR PRODUCTO
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteProductoById(@PathVariable("id") Integer id) {
         productoService.deleteProducto(id);
         return ResponseEntity.noContent().build();
     }
-
+    //Consultar estadisticas
     @GetMapping("/estadisticas")
     public ResponseEntity<?> getEstadisticas() {
         var estadisticas = productoService.obtenerEstadisticas();

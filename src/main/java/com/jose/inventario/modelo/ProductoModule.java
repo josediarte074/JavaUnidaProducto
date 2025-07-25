@@ -9,52 +9,61 @@ import jakarta.persistence.GenerationType;
 @Entity
 @Table(name = "productos")
 public class ProductoModule {
-    @Id
+     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
     private String descripcion;
     private Integer stock;
+    private Integer precio;
     private String estado;
 
-    public Integer getId(){
+    public Integer getId() {
         return id;
     }
 
-    public void setId(){
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getNombre(){
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(){
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getDescripcion(){
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(){
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public Integer getStock(){
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(){
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 
-    public String getEstado(){
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(){
+    public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+     public Integer getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Integer precio) {
+        this.precio = precio;
     }
 
     
